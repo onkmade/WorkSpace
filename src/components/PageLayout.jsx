@@ -1,12 +1,28 @@
+import { SidebarIcon } from "@phosphor-icons/react";
+import { SideBar } from "./SideBar";
+
 export default function PageLayout({children}){
     return(
-        <div>
+        <div className="min-h-svh bg-stone-900 text-stone-50 flex">
             <Sidebar />
-            <main>
+            <main className='flex-1 p-2'>
+                <Header/>
                 {children}
                 <Footer/>
             </main>
         </div>
+    )
+}
+
+function Sidebar(){
+    return(
+        <aside className="bg-stone-800 min-w-60 p-1">
+
+            <nav>
+
+            </nav>
+            <footer></footer>
+        </aside>
     )
 }
 
@@ -18,17 +34,6 @@ function Header(){
     )
 }
 
-function Sidebar(){
-    return(
-        <aside>
-            <header>
-                <h1>Logo</h1>
-            </header>
-            <nav></nav>
-            <footer></footer>
-        </aside>
-    )
-}
 
 function Footer(){
     
