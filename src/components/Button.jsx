@@ -1,11 +1,11 @@
 const styles = {
-    primary: 'bg-olive-800 text-olive-300 hover:text-olive-50',
-    secondary: 'bg-olive-600 text-olive-300 hover:text-olive-50'
+    primary: 'bg-stone-800 text-stone-300 hover:text-stone-50',
+    secondary: 'bg-stone-600 text-stone-300 hover:text-stone-50'
 }
 
 const sizes = {
-  sm: 'px-[1em] py-[0.375em] rounded-[0.5em] text-sm',   // 14px / 5.25px / 7px radius (font 14px)
-  md: 'px-[1em] py-[0.5em] rounded-[0.5em] text-base',   // 16px / 8px    / 8px radius (font 16px)
+  sm: 'px-[0.75em] py-[0.375em] rounded-[0.5em] text-sm',   // 14px / 5.25px / 7px radius (font 14px)
+  md: 'px-[0.75em] py-[0.35em] rounded-[0.5em] text-base',   // 16px / 8px    / 8px radius (font 16px)
   lg: 'px-[1em] py-[0.625em] rounded-[0.75em] text-lg',  // 18px / 11.25px / 13.5px radius (font 18px)
 };
 
