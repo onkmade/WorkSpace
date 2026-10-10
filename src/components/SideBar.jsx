@@ -1,16 +1,20 @@
 import { useState } from "react";
 import Button from "./Button";
 
-export default function SideBar(){
+export default function SideBar({onPageSelect}){
     return(
         <aside className="bg-stone-800 w-full max-w-[16rem] min-w-56 p-1">
-            <SideBarContent/>
+            <SideBarContent onPageClick={onPageSelect}/>
         </aside>
     )
 }
 
-function SideBarContent(){
+function SideBarContent({onPageClick}){    
     return(
-        <h1>Something better</h1>
+        <nav>
+            <li onClick={() => onPageClick('DashBoard')} >DashBoard</li>
+            <li onClick={() => onPageClick('Tasks')} >Tasks</li>
+            <li onClick={() => onPageClick('Projects')} >Projects</li>
+        </nav>
     )
 }

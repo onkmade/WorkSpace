@@ -1,6 +1,8 @@
+import {twMerge} from 'tailwind-merge';
+
 const styles = {
-    primary: 'bg-stone-800 text-stone-300 hover:text-stone-50',
-    secondary: 'bg-stone-600 text-stone-300 hover:text-stone-50'
+    primary: 'bg-stone-800 text-stone-300 hover:text-stone-50 w-fit',
+    secondary: 'bg-stone-600 text-stone-300 hover:text-stone-50 w-fit'
 }
 
 const sizes = {
@@ -9,13 +11,19 @@ const sizes = {
   lg: 'px-[1em] py-[0.625em] rounded-[0.75em] text-lg',  // 18px / 11.25px / 13.5px radius (font 18px)
 };
 
-export default function Button({children, variant = 'primary', size = 'md', disabled = false, onClick}){
-    return(
+
+export default function Button({ children, variant = 'primary', size = 'md', disabled = false, onClick, className }) {
+    return (
         <button
             onClick={onClick}
-            className={`${styles[variant]} ${sizes[size]} ${disabled ? 'cursor-not-allowed opacity-50' : 'cursor-pointer opacity-100'}`} 
+            className={twMerge(
+                styles[variant],
+                sizes[size],
+                disabled ? 'cursor-not-allowed opacity-50' : 'cursor-pointer opacity-100',
+                className
+            )}
         >
             {children}
         </button>
-    )
+    );
 }
