@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Button from "./Button";
 import Modal from "./Modal";
+import Tasks from "./Card";
 
 export function MainContentArea({children}){
     return(
@@ -10,12 +11,12 @@ export function MainContentArea({children}){
     )
 }
 
-export function MainContent({selected}){
+export function MainContent({selected, tasks}){
     return(
         <main className="flex-1 p-1">
             <MainHeader selected={selected}/>
             <MainArea>
-                <MainAreaSection />
+                <MainAreaSection todotask={tasks}/>
             </MainArea>
         </main>
     );
@@ -39,7 +40,7 @@ function MainArea({children}){
     }
 
     return(
-        <div>
+        <div className="">
             <Button onClick={() => setIsClose(!isOpen)}>Add</Button>
             <Modal isOpen={isOpen} onHandleClose={handleClose}/>
             {children}
@@ -47,12 +48,22 @@ function MainArea({children}){
     );
 }
 
-function MainAreaSection(){
+function MainAreaSection({todotask}){
     return(
         <section 
             className="py-1"
         >
-            
+            <MainAreaArticle tasks={todotask}/>
         </section>
+    );
+}
+
+function MainAreaArticle({tasks}){
+    return(
+        <div
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-1.5 grid-cols-[repeat(auto-fill, minmax(220px, 1fr))]"
+        >
+            <Tasks tasks={tasks}/>
+        </div>
     );
 }
