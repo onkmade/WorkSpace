@@ -2,7 +2,7 @@ import MainHeader from "./2_Header"
 
 export default function Main(){
     return(
-        <div>
+        <div className="p-2">
             <MainHeader />
         </div>
     )

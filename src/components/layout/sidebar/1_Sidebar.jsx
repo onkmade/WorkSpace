@@ -1,11 +1,7 @@
 import { SidebarHeader } from "./2_SidebarHeader"
 import { SidebarGroups } from "./4_SidebarGroups"
 import { SidebarContent } from "./3_SidebarContent"
-import {
-    IconHome,
-    IconLayoutList,
-    IconCheckbox
-} from '@tabler/icons-react'
+import { mainItems } from "../../constants/navItems"
 
 export default function Sidebar(){
     return(
@@ -17,9 +13,3 @@ export default function Sidebar(){
         </aside>
     )
 }
-
-const mainItems = [
-    {label: 'DashBoard', icon: IconHome},
-    {label: 'Projects', icon: IconLayoutList},
-    {label: 'Tasks', icon: IconCheckbox }
-];

@@ -1,3 +1,3 @@
 import { createContext } from "react";
 
-export const SelectedContext = createContext('DashBoard');
+export const SelectedContext = createContext();

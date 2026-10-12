@@ -8,7 +8,7 @@ export function SidebarGroups({items}){
             {items.map(item => {
                 const Icon = item.icon
                 return <a 
-                    onClick={() => setSelectPage(`${item.icon} ${item.label}`)}
+                    onClick={() => setSelectPage(item)}
                     href="#"
                     key={item.label}
                     className="bg-stone-700/50 p-1 rounded-sm flex items-center gap-2 text-stone-300"
