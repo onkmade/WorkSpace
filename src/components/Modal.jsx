@@ -2,7 +2,21 @@ import { useState } from "react";
 import Button from "./Button";
 import { IconX } from '@tabler/icons-react';
 
-export default function Modal({ onHandleClose, isOpen }) {
+export default function Modal({ onHandleClose, isOpen, onGrab, todo }) {
+    const [title, setTitle] = useState('');
+    const [description, setDescription] = useState('');
+    const index = todo.length;    
+
+    console.log(todo);
+
+    function handleSubmit(e){
+        e.preventDefault();
+        if(!title.trim()) return;
+        onGrab([...todo], {id: index + 1, title, description, status: 'incomplete'});
+        setTitle('');
+        setDescription('');
+    }
+    
     return(
         <div 
             onClick={onHandleClose}
@@ -10,7 +24,7 @@ export default function Modal({ onHandleClose, isOpen }) {
         >
             <form
                 onClick={(e) => e.stopPropagation()}
-                onSubmit={(e) => e.preventDefault()}
+                onSubmit={handleSubmit}
                 className="bg-stone-800 max-w-md w-100 h-fit rounded-xl space-y-2 border border-stone-500 p-4 z-50"
             >
                 <div className="flex justify-between items-center">
@@ -30,6 +44,8 @@ export default function Modal({ onHandleClose, isOpen }) {
                     <label htmlFor="title">
                         <span className="text-stone-400 text-sm">Title:</span>
                         <input
+                            value={title}
+                            onChange={(e) => setTitle(e.target.value)}
                             type="text"
                             id="title"
                             placeholder="Enter the Title"
@@ -40,6 +56,8 @@ export default function Modal({ onHandleClose, isOpen }) {
                     <label htmlFor="description">
                         <span className="text-stone-400 text-sm">Description:</span>
                         <input 
+                            value={description}
+                            onChange={(e) => setDescription(e.target.value)}
                             type="text" 
                             id="description" 
                             placeholder="Enter the Description"
@@ -48,7 +66,12 @@ export default function Modal({ onHandleClose, isOpen }) {
                     </label>
                     
                     <span className="flex items-center justify-end pt-2">
-                        <Button className="bg-stone-700 text-white px-4 py-2 rounded">Add Task</Button>
+                        <Button
+                            type="submit" 
+                            className="bg-stone-700 text-white px-4 py-2 rounded"
+                            >
+                                Add Task
+                        </Button>
                     </span>
                 </div>
             </form>

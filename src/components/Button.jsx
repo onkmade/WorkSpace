@@ -12,7 +12,7 @@ const sizes = {
 };
 
 
-export default function Button({ children, variant = 'primary', size = 'md', disabled = false, onClick, className }) {
+export default function Button({ children, variant = 'primary', size = 'md', disabled = false, onClick, className, type = 'submit' }) {
     return (
         <button
             onClick={onClick}

@@ -2,6 +2,10 @@ import { useState } from "react";
 import Button from "./Button";
 import Modal from "./Modal";
 import Tasks from "./Card";
+import ComponentA from "../practice/ComponentA";
+import ComponentB from "../practice/ComponentB";
+import ComponentC from "../practice/ComponentC";
+import ComponentD from "../practice/ComponentD";
 
 export function MainContentArea({children}){
     return(
@@ -11,11 +15,11 @@ export function MainContentArea({children}){
     )
 }
 
-export function MainContent({selected, tasks}){
+export function MainContent({selected, tasks, onTask}){
     return(
         <main className="flex-1 p-1">
             <MainHeader selected={selected}/>
-            <MainArea>
+            <MainArea todo={tasks} onTask={onTask}>
                 <MainAreaSection todotask={tasks}/>
             </MainArea>
         </main>
@@ -31,7 +35,7 @@ function MainHeader({selected}){
     )
 }
 
-function MainArea({children}){
+function MainArea({children, onTask, todo}){
     const [isOpen, setIsClose] = useState(false);
 
     function handleClose(e){
@@ -42,7 +46,7 @@ function MainArea({children}){
     return(
         <div className="">
             <Button onClick={() => setIsClose(!isOpen)}>Add</Button>
-            <Modal isOpen={isOpen} onHandleClose={handleClose}/>
+            <Modal todo={todo} onGrab={onTask} isOpen={isOpen} onHandleClose={handleClose}/>
             {children}
         </div>
     );
@@ -51,17 +55,20 @@ function MainArea({children}){
 function MainAreaSection({todotask}){
     return(
         <section 
-            className="py-1"
+            className="py-1 space-y-2"
         >
             <MainAreaArticle tasks={todotask}/>
+            <div className="flex gap-1">
+                <ComponentA />
+            </div>
         </section>
     );
 }
 
-function MainAreaArticle({tasks}){
+function MainAreaArticle({tasks, onTask}){
     return(
         <div
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-1.5 grid-cols-[repeat(auto-fill, minmax(220px, 1fr))]"
+            className="grid grid-cols-[repeat(auto-fill,minmax(min(100%,275px),1fr))] items-start gap-1.5"
         >
             <Tasks tasks={tasks}/>
         </div>

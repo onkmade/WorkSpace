@@ -6,7 +6,7 @@ export default function SideBar({onPageSelect}){
         <aside className="bg-stone-800 w-full max-w-[16rem] min-w-56 p-1">
             <SideBarContent onPageClick={onPageSelect}/>
         </aside>
-    )
+    );
 }
 
 function SideBarContent({onPageClick}){    

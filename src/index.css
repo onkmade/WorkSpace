@@ -1,1 +1,10 @@
 @import 'tailwindcss';
+
+.box{
+    border: 0.25rem;
+    border-color: black;
+    padding: 1rem;
+    border-radius: 0.75rem;
+    border-style: solid;
+    margin: 2rem;
+}
