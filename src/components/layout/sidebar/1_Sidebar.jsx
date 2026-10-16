@@ -1,7 +1,7 @@
 import { SidebarHeader } from "./2_SidebarHeader"
 import { SidebarGroups } from "./4_SidebarGroups"
 import { SidebarContent } from "./3_SidebarContent"
-import { mainItems } from "../../constants/navItems"
+import { mainItems } from "../../../constants/navItems"
 
 export default function Sidebar(){
     return(
