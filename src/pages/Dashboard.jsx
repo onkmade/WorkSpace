@@ -1,20 +1,25 @@
 import { Button } from "@/components/ui/Button"
-import TaskBoard from "@/components/tasks/TaskBoard"
-import { initialTasks } from "@/constants/tasks"
-import { useState } from "react"
-
+import { TaskProvider } from "@/context/TaskContext"
+import TaskSection from "@/components/tasks/TaskSection"
+import Modal from "@/components/modal/AddTask"
+import { ModalContext } from "@/context/ModalContext"
+import { useContext } from "react"
 
 export default function Dashboard(){
-    const [tasks, setTasks] = useState(initialTasks);
+    const { isModalOpen, setIsModalOpen } = useContext(ModalContext);
     return(
         <div>
-            <Button 
+            <Button
+                onClick={(e) => setIsModalOpen(!isModalOpen)}
                 variant={'primary'}
             >
                 Add
             </Button>
-
-            <TaskBoard task={tasks} />
+            
+            <TaskProvider>
+                <TaskSection />
+                <Modal />
+            </TaskProvider>
         </div>
     )
 }

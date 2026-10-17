@@ -1,5 +1,7 @@
-export default function TaskBoard({tasks}){
+import TaskList from "./TaskList"
+
+export default function TaskBoard(){
     return(
-        TaskList
+        <h1>HOLD information</h1>
     )
 }

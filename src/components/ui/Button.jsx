@@ -1,7 +1,8 @@
 import { twMerge } from "tailwind-merge"
 
 const styles = {
-    primary: 'bg-stone-800 text-stone-200 hover:text-stone-50 px-2 py-1 rounded-sm border border-stone-700'
+    primary: 'bg-stone-800 text-stone-200 hover:text-stone-50 px-2 py-1 rounded-sm border border-stone-700 cursor-pointer',
+    secondary: 'bg-stone-700 text-stone-200 hover:text-stone-50 px-2 py-1 rounded-sm border border-stone-600 cursor-pointer'
 }
 
 export function Button({children, onClick, variant, className}){

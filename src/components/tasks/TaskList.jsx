@@ -1,5 +1,12 @@
-export default function TaskList({tasks}){
+import TaskCard from "./TaskCard";
+import { TasksContext } from "@/context/TaskContext";
+import { useContext } from "react";
+
+export default function TaskList(){
+    const { tasks } = useContext(TasksContext); 
     return(
-        <h1>hello</h1>
+        <section>
+            {tasks.map( task => <TaskCard key={task.id} task={task} /> )}
+        </section>
     )
 }
