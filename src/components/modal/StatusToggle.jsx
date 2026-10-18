@@ -1,6 +1,6 @@
 import { Button } from "../ui/Button";
 
-const on = 'outline-2 outline-offset-2 outline-stone-300';
+const on = 'outline-2 outline-offset-2 outline-stone-500';
 
 export default function StatusToggle({ value, onChange }) {
   return (
