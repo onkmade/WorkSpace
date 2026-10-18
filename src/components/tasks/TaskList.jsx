@@ -11,7 +11,7 @@ export default function TaskList(){
     return(
         <div className="grid grid-cols-[repeat(auto-fit,minmax(min(343px,100%),1fr))] gap-2 items-start">
             {/* Complete Section */}
-            <section className="bg-stone-800 rounded-md">
+            <section className="bg-stone-800 rounded-lg">
                 <h2 className="p-2">Complete</h2>
                 <li className="h-px w-full bg-stone-500/50 list-none"></li>
                 <section className="columns-3xs gap-2 p-2 ">
@@ -23,7 +23,7 @@ export default function TaskList(){
             </section>
 
             {/* InComplete Section */}
-            <section className="bg-stone-800 rounded-md">
+            <section className="bg-stone-800 rounded-lg">
                 <h2 className="p-2">Incomplete</h2>
                 <li className="h-px w-full bg-stone-500/50 list-none"></li>
                 <section className="columns-3xs gap-2 p-2">

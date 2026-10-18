@@ -43,8 +43,8 @@ export default function Modal(){
                 <h1 className="text-2xl font-semibold p-2">Add Task</h1>
                 <li className="h-px w-full bg-stone-700/50 list-none"></li>
 
-                <FormField label={'Title:'} id={'title'} onChange={setTitle} value={title} placeholder={'Title'} />
-                <FormField label={'Description'} id={'description'} onChange={setDescription} value={description} placeholder={'Description'}/>
+                <FormField element={'input'} label={'Title:'} id={'title'} onChange={setTitle} value={title} placeholder={'Title'} />
+                <FormField element={'textarea'} label={'Description'} id={'description'} onChange={setDescription} value={description} placeholder={'Description'}/>
 
                 <div className="flex items-center justify-between gap-2 p-2">
                     <StatusToggle value={status} onChange={setStatus}/>
