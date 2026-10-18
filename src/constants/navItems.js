@@ -1,5 +1,4 @@
 import {
-    IconHome,
     IconLayoutList,
     IconCheckbox,
     IconLayoutDashboard
