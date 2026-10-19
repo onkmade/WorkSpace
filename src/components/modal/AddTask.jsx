@@ -33,12 +33,12 @@ export default function Modal(){
     return(
         <div
             onClick={handleClose}
-            className={`${isModalOpen ? 'block' : 'hidden'} bg-black/50 absolute inset-0 grid place-content-center`}
+            className={`${isModalOpen ? 'block' : 'hidden'} bg-black/50 fixed inset-0 grid place-items-center`}
         >
             <form
                 onSubmit={handleSubmit}
                 onClick={(e) => e.stopPropagation()}
-                className="bg-stone-800 rounded-md w-md"
+                className="bg-stone-800 rounded-md w-full max-w-md lg:max-w-xl"
             >
                 <h1 className="text-2xl font-semibold p-2">Add Task</h1>
                 <li className="h-px w-full bg-stone-700/50 list-none"></li>
