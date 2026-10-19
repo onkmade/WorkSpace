@@ -1,5 +1,5 @@
 import Sidebar from "./layout/sidebar/1_Sidebar";
-import Main from "./layout/main/1_main";
+import Main from "./layout/main/Main";
 import { useState } from "react";
 import { mainItems } from "../constants/navItems";
 import { SelectedContext } from "../context/BreadCrumb";

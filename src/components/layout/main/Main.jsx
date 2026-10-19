@@ -1,4 +1,4 @@
-import MainHeader from "./2_Header"
+import MainHeader from "./MainHeader"
 import { Outlet } from "react-router"
 
 export default function Main(){
