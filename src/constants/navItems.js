@@ -6,6 +6,6 @@ import {
 
 export const mainItems = [
     {label: 'DashBoard', icon: IconLayoutDashboard, to: '/'},
-    {label: 'Projects', icon: IconLayoutList, to: '/Projects'},
-    {label: 'Tasks', icon: IconCheckbox, to: '/Tasks' }
+    {label: 'Projects', icon: IconLayoutList, to: '/projects'},
+    {label: 'Tasks', icon: IconCheckbox, to: '/tasks' }
 ];

@@ -14,7 +14,6 @@ export function SidebarGroups({items}){
                         to={item.to}
                         end={item.to === '/'}
                         onClick={() => setSelectPage(item)}
-                        href="#"
                         className={({ isActive }) =>
                             `bg-stone-700/20 p-1 rounded-sm flex items-center gap-2 text-stone-300
                             ${

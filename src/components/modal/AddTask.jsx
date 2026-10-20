@@ -50,34 +50,36 @@ export default function Modal(){
                         className={`bg-black/50 fixed inset-0 grid place-items-center`}
             
                     >
-                        <motion.form
-                            onSubmit={handleSubmit}
-                            onClick={(e) => e.stopPropagation()}
-                            initial={{opacity: 0, y:12, scale: 0 }}
-                            animate={{opacity: 1, y:0, scale: 1 }}
-                            exit={{opacity: 0, y: -12, scale: 0}}
-                            transition={{duration: 0.35, ease: 'easeInOut'}}
-                            className="bg-stone-800 rounded-md w-full max-w-md lg:max-w-xl"
-                        >
-                            <h1 className="text-2xl font-semibold p-2">Add Task</h1>
-                            <LineSeperator />
-            
-                            <FormField element={'input'} label={'Title:'} id={'title'} onChange={setTitle} value={title} placeholder={'Title'} />
-                            <FormField element={'textarea'} label={'Description'} id={'description'} onChange={setDescription} value={description} placeholder={'Description'}/>
-            
-                            <div className="flex items-center justify-between gap-2 p-2">
-                                <StatusToggle value={status} onChange={setStatus}/>
-                                
-                                <div className="space-x-1">
-                                    <Button type='button' onClick={handleClose} variant={'secondary'}>Close</Button>
-                                    <Button type="submit" variant={'secondary'}>
-                                        {
-                                            added ? 'Adding' : 'Add Task'
-                                        }
-                                    </Button>
+                        <div className="w-full p-2 flex justify-center">
+                            <motion.form
+                                onSubmit={handleSubmit}
+                                onClick={(e) => e.stopPropagation()}
+                                initial={{opacity: 0, y:12, scale: 0 }}
+                                animate={{opacity: 1, y:0, scale: 1 }}
+                                exit={{opacity: 0, y: -12, scale: 0}}
+                                transition={{duration: 0.35, ease: 'easeInOut'}}
+                                className="bg-stone-800 rounded-md w-full max-w-md lg:max-w-xl"
+                            >
+                                <h1 className="text-2xl font-semibold p-2">Add Task</h1>
+                                <LineSeperator />
+                
+                                <FormField element={'input'} label={'Title:'} id={'title'} onChange={setTitle} value={title} placeholder={'Title'} />
+                                <FormField element={'textarea'} label={'Description'} id={'description'} onChange={setDescription} value={description} placeholder={'Description'}/>
+                
+                                <div className="grid grid-cols-2 items-center justify-between gap-2 p-2">
+                                    <StatusToggle value={status} onChange={setStatus}/>
+                                    
+                                    <div className="grid gap-1 place-items-end md:flex md:items-center md:justify-end">
+                                        <Button className={'xs:w-20 md:w-fit'} type='button' onClick={handleClose} variant={'secondary'}>Close</Button>
+                                        <Button className={'xs:w-20 md:w-fit'} type="submit" variant={'secondary'}>
+                                            {
+                                                added ? 'Adding' : 'Add'
+                                            }
+                                        </Button>
+                                    </div>
                                 </div>
-                            </div>
-                        </motion.form>
+                            </motion.form>
+                        </div>
                     </motion.div>
             )}
         </AnimatePresence>
