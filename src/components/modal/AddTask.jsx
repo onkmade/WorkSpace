@@ -16,7 +16,7 @@ export default function Modal(){
     // Three states
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
-    const [ status, setStatus] = useState();
+    const [ status, setStatus] = useState('todo');
     const [ added, setAdded] = useState(false);
 
     async function handleSubmit(e){
