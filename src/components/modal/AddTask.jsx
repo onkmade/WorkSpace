@@ -3,9 +3,8 @@ import { LineSeperator } from "../ui/LineSeparator";
 import { Button } from "../ui/Button"
 import { ModalContext } from "@/context/ModalContext";
 import { TasksContext } from "@/context/TaskContext";
-import FormField from "../ui/FormField";
-import StatusToggle from "./StatusToggle";
 import { motion, AnimatePresence } from "motion/react";
+import FormField from "../ui/FormField"
 
 export default function Modal(){
     const {isModalOpen, setIsModalOpen} = useContext(ModalContext);
@@ -22,7 +21,6 @@ export default function Modal(){
     async function handleSubmit(e){
         e.preventDefault();
         setAdded(true);
-
         await new Promise((r) => setTimeout(r,1000));
         setTasks(prev => [...prev, { id: taskLength + 1, title, description, status}]);
         setTitle('');
@@ -67,7 +65,6 @@ export default function Modal(){
                                 <FormField element={'textarea'} label={'Description'} id={'description'} onChange={setDescription} value={description} placeholder={'Description'}/>
                 
                                 <div className="grid grid-cols-2 items-center justify-between gap-2 p-2">
-                                    <StatusToggle value={status} onChange={setStatus}/>
                                     
                                     <div className="grid gap-1 place-items-end md:flex md:items-center md:justify-end">
                                         <Button className={'xs:w-20 md:w-fit'} type='button' onClick={handleClose} variant={'secondary'}>Close</Button>

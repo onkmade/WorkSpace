@@ -1,6 +1,6 @@
 export function TaskWrapper({children}){
     return (
-        <div className="">
+        <div className="space-y-2">
             {children}
         </div>
     )
