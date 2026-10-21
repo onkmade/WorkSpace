@@ -5,6 +5,7 @@ import { ModalContext } from "@/context/ModalContext";
 import { TasksContext } from "@/context/TaskContext";
 import { motion, AnimatePresence } from "motion/react";
 import FormField from "../ui/FormField"
+import SelectOptions from "../Select/SelectOptions";
 
 export default function Modal(){
     const {isModalOpen, setIsModalOpen} = useContext(ModalContext);
@@ -56,7 +57,7 @@ export default function Modal(){
                                 animate={{opacity: 1, y:0, scale: 1 }}
                                 exit={{opacity: 0, y: -12, scale: 0}}
                                 transition={{duration: 0.35, ease: 'easeInOut'}}
-                                className="bg-stone-800 rounded-md w-full max-w-md lg:max-w-xl"
+                                className="bg-stone-800 rounded-md w-full max-w-md lg:max-w-xl relative"
                             >
                                 <h1 className="text-2xl font-semibold p-2">Add Task</h1>
                                 <LineSeperator />
@@ -65,7 +66,7 @@ export default function Modal(){
                                 <FormField element={'textarea'} label={'Description'} id={'description'} onChange={setDescription} value={description} placeholder={'Description'}/>
                 
                                 <div className="grid grid-cols-2 items-center justify-between gap-2 p-2">
-                                    
+                                    <SelectOptions />
                                     <div className="grid gap-1 place-items-end md:flex md:items-center md:justify-end">
                                         <Button className={'xs:w-20 md:w-fit'} type='button' onClick={handleClose} variant={'secondary'}>Close</Button>
                                         <Button className={'xs:w-20 md:w-fit'} type="submit" variant={'secondary'}>
