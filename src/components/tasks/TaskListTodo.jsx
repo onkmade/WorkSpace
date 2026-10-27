@@ -5,7 +5,6 @@ import { TaskWrapper } from "./TaskWrapper"
 import { TasksContext } from "@/context/TaskContext"
 import { useContext } from "react"
 import { TaskCardContainer } from "./TaskCardContainer"
-import TaskCard from "./TaskCard"
 
 export default function TaskListTodo(){
     const { tasks } = useContext(TasksContext);    
@@ -17,11 +16,7 @@ export default function TaskListTodo(){
                 </TaskIconWrapper>
                 <h1>To-do</h1>
             </TaskListWrapper>
-            <TaskCardContainer>
-                {
-                    tasks.filter(item => item.status === 'todo').map(item => <TaskCard task={item}/> )
-                }
-            </TaskCardContainer>
+            <TaskCardContainer tasks={tasks} status={'todo'}/>
         </TaskWrapper>
     )
 }
