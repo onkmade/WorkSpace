@@ -5,7 +5,7 @@ import { motion } from 'motion/react'
 export default function TaskCard({task}){
     return(
         <motion.article 
-            className="w-full outline outline-offset-1 outline-stone-500/30 bg-[#191616] bg-[repeating-linear-gradient(-45deg,transparent,transparent_6px,rgb(255_255_255/0.05)_4px,rgb(255_255_255/0.05)_7px)] rounded-md space-y-2 break-inside-avoid mb-2 px-1 pb-1 pt-1"
+            className="w-full outline outline-offset-1 outline-stone-500/30 bg-[#191616] bg-[repeating-linear-gradient(-45deg,transparent,transparent_6px,rgb(255_255_255/0.05)_4px,rgb(255_255_255/0.05)_7px)] rounded-md space-y-2 break-inside-avoid px-1 pb-1 pt-1"
             initial={{ opacity: 0, y:10 }}
             animate={{ opacity: 1, y:0 }}
             transition={{ duration: 0.55, ease: 'easeInOut'}}

@@ -2,8 +2,13 @@ import TaskListWrapper from "./TaskListWrapper"
 import { TaskIconWrapper } from "./TaskIconWrapper"
 import { TaskWrapper } from "./TaskWrapper"
 import { IconProgressCheck } from "@tabler/icons-react"
+import { TaskCardContainer } from "./TaskCardContainer"
+import { TasksContext } from "@/context/TaskContext"
+import { useContext } from "react"
+import TaskCard from "./TaskCard"
 
 export default function TaskListComplete(){
+    const { tasks } = useContext(TasksContext);
     return(
         <TaskWrapper>
             <TaskListWrapper>
@@ -12,6 +17,11 @@ export default function TaskListComplete(){
                 </TaskIconWrapper>
                 <h1>Completed</h1>
             </TaskListWrapper>
+                <TaskCardContainer>
+                    {
+                        tasks.filter(item => item.status === 'completed').map(item => <TaskCard task={item}/> )
+                    }
+                </TaskCardContainer>
         </TaskWrapper>
     )
 }
