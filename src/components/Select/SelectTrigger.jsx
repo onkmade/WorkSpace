@@ -1,4 +1,9 @@
-export function SelectTrigger({children, onClick}){
+import { twMerge } from "tailwind-merge";
+
+export function SelectTrigger({option, children, onClick}){
+    console.log(option);
+    
+    const color = option?.color || '#44403b';
 
     function handleClick(e){
         e.preventDefault();
@@ -6,8 +11,9 @@ export function SelectTrigger({children, onClick}){
     }
     
     return(
-        <button 
-            className="bg-stone-700 py-1 rounded-sm cursor-pointer max-w-35 w-full"
+        <button
+            className={twMerge(`bg-(--color-bg)/20 p-0.5 rounded-sm`)}
+            style={{'--color-bg': color}}
             onClick={handleClick}
         >
             {children}

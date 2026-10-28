@@ -2,8 +2,8 @@ import { SelectOption } from "@/context/SelectOption";
 import { useContext } from "react";
 import { IsOptionContext } from "./SelectOptions";
 
-export function SelectItem({item, onClick}){
-    const {isOption, setOption} = useContext(SelectOption);
+export function SelectItem({item}){
+    const {setOption} = useContext(SelectOption);
     const {setIsOption} = useContext(IsOptionContext);
     const Icon = item.icon;
     const color = item.color;

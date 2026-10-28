@@ -8,11 +8,9 @@ import { AnimatePresence } from "motion/react";
 
 export const IsOptionContext = createContext(null);
 
-export default function SelectOptions({ option, setOption }){
+export default function SelectOptions({ option, setOption, children}){
     const [isOption, setIsOption] = useState(false);
     const [items] = useState(SelectItems);
-    const Icon = option?.icon || null;
-    const color = option?.color || null;
 
     function handleOption(){
         setIsOption(!isOption);
@@ -22,15 +20,9 @@ export default function SelectOptions({ option, setOption }){
         <Select>
             <IsOptionContext.Provider value={{isOption, setIsOption}}>
                 <SelectOption.Provider value={{option, setOption}}>
-                    <SelectTrigger onClick={handleOption}>
-                        {option
-                            ? (
-                                <span className="flex items-center gap-1 p-1">
-                                    <Icon size={18} stroke={1.5} color={color}/>
-                                    <h5 className="text-sm">{option.label}</h5>
-                                </span>
-                            )
-                            : 'Select'}
+                    <SelectTrigger option={option} onClick={handleOption}>
+                        {/* Main Line which shows the thing */}
+                        {children}
                     </SelectTrigger>
                     <AnimatePresence>
                         {isOption && <SelectPopUp items={items}/>}

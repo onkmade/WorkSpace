@@ -4,7 +4,7 @@ import { motion } from "motion/react"
 export function SelectPopUp({items}){
     return(
         <motion.nav 
-            className="bg-black/50 backdrop-blur-xs rounded-sm absolute left-0 top-0 grid place-content-center inset-0"
+            className="bg-black/50 backdrop-blur-xs rounded-sm absolute left-0 top-0 grid place-content-center inset-0 z-50"
             initial={{opacity:0}}
             animate={{opacity: 1}}
             exit={{opacity:0}}

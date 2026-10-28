@@ -4,9 +4,11 @@ import { Button } from "../ui/Button";
 import { ModalContext } from "@/context/ModalContext";
 import { TasksContext } from "@/context/TaskContext";
 import { motion, AnimatePresence } from "motion/react";
-import { IconX } from "@tabler/icons-react";
+import { IconX, IconSelect } from "@tabler/icons-react";
 import FormField from "../ui/FormField";
 import SelectOptions from "../Select/SelectOptions";
+import { SelectOptionDisplay } from "../Select/SelectOptionDisplay";
+
 
 export default function Modal() {
     const { isModalOpen, setIsModalOpen } = useContext(ModalContext);
@@ -16,6 +18,26 @@ export default function Modal() {
     const [description, setDescription] = useState("");
     const [option, setOption] = useState(null);
     const [added, setAdded] = useState(false);
+
+    const itemOption = {
+        id: 0, 
+        value: 'todo',       
+        label: 'Select/Default To-do',       
+        icon: IconSelect,         
+        color: '#44403b'
+    }
+
+    const { icon: Icon, label, color} = itemOption;
+
+    const fallback = itemOption
+    ?   (<span className="flex items-center gap-1 p-1">
+            {Icon && <Icon size={18} stroke={1.5} color={color} />}
+            <h5 className="text-sm">{label}</h5>
+        </span>)
+
+    : null;
+
+    
 
     async function handleSubmit(e) {
         e.preventDefault();
@@ -115,7 +137,9 @@ export default function Modal() {
                                 <SelectOptions
                                     option={option}
                                     setOption={setOption}
-                                />
+                                >
+                                    <SelectOptionDisplay option={option} fallback={fallback}/>
+                                </SelectOptions>
 
                                 <div className="grid gap-1 place-items-end md:flex md:items-center md:justify-end">
                                     <Button
