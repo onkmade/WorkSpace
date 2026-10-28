@@ -33,7 +33,7 @@ export default function Modal() {
                     id: crypto.randomUUID(),
                     title,
                     description,
-                    status: option?.value,
+                    status: option?.value ?? 'todo',
                 },
             ]);
 

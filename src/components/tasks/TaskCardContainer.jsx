@@ -2,13 +2,14 @@ import EmptyState from "../ui/EmptyState"
 import TaskCard from "./TaskCard";
 
 export function TaskCardContainer({tasks, status}){
-    const taskLength = tasks.length;
+    const redefinedTasks = tasks.filter(task => task.status === status);
+    const redefinedTasksLength = redefinedTasks.length;
     return(
-        <section className="p-2 bg-stone-800 rounded-xl grid gap-2">
+        <section className="p-2 bg-stone-800 rounded-lg grid gap-2">
             {
-                taskLength === 0 
+                redefinedTasksLength === 0 
                 ? <EmptyState message={'No Task Added Yet'}/>
-                : tasks.filter(task => task.status === status ).map(task => <TaskCard task={task}/>)
+                : redefinedTasks.map(task => <TaskCard task={task}/>)
             }
         </section>
     )
