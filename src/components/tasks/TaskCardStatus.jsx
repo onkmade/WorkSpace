@@ -1,21 +1,30 @@
-import { twMerge } from "tailwind-merge";
 import { SelectItems } from "@/constants/SelectOptions";
 import SelectOptions from "../Select/SelectOptions";
 import { SelectOptionDisplay } from "../Select/SelectOptionDisplay";
-import { useState } from "react";
+import { TasksContext } from "@/context/TasksContext";
+import { useContext } from "react";
 
 export function TaskCardStatus({ task }) {
-    const item = SelectItems.find(
-        (option) => option.value === task.status
+    const { setTasks } = useContext(TasksContext);
+
+    const option = SelectItems.find(
+        (item) => item.value === task.status
     );
 
-    const [option, setOption] = useState(item ?? null);
-    if (!item) return null;
+    if (!option) return null;
 
-    const { icon: Icon, color } = item;
-    const fallback = Icon
-        ? <Icon size={18} color={color} />
-        : null;
+    function setOption(nextOption) {
+        setTasks((currentTasks) =>
+            currentTasks.map((currentTask) =>
+                currentTask.id === task.id
+                    ? { ...currentTask, status: nextOption.value }
+                    : currentTask
+            )
+        );
+    }
+
+    const { icon: Icon, color } = option;
+    const fallback = Icon ? <Icon size={18} color={color} /> : null;
 
     return (
         <SelectOptions option={option} setOption={setOption}>

@@ -6,13 +6,26 @@ const styles = {
     secondary:   'bg-stone-700 text-stone-400 hover:text-stone-50 px-2 py-1 rounded-sm border border-stone-600 cursor-pointer'
 }
 
-export function Button({children, onClick, variant, className, icon = '', iconSize, iconStroke}){
+export function Button({
+    children,
+    onClick,
+    variant,
+    className,
+    icon = '',
+    iconSize,
+    iconStroke,
+    type = "button",
+    disabled = false,
+}){
     const Icon = icon;
     return(
         <button
+            type={type}
             onClick={onClick}
+            disabled={disabled}
             className={twMerge(
                 styles[variant],
+                disabled && "cursor-not-allowed opacity-50",
                 className
             )}
         >

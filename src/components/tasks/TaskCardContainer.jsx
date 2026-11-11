@@ -1,16 +1,25 @@
 import EmptyState from "../ui/EmptyState"
+import { TasksContext } from "@/context/TasksContext";
+import { useContext } from "react";
 import TaskCard from "./TaskCard";
 
 export function TaskCardContainer({tasks, status}){
-    const redefinedTasks = tasks.filter(task => task.status === status);
-    const redefinedTasksLength = redefinedTasks.length;
+    const { searchQuery } = useContext(TasksContext);
+    const normalizedQuery = searchQuery.trim().toLowerCase();
+    const visibleTasks = tasks.filter((task) => {
+        if (task.status !== status) return false;
+        if (!normalizedQuery) return true;
+
+        return `${task.title} ${task.description}`.toLowerCase().includes(normalizedQuery);
+    });
+
     return(
-        <section className="p-2 bg-stone-800 rounded-lg grid gap-2">
+        <div className="grid content-start gap-2 p-2">
             {
-                redefinedTasksLength === 0 
-                ? <EmptyState message={'No Task Added Yet'}/>
-                : redefinedTasks.map(task => <TaskCard task={task}/>)
+                visibleTasks.length === 0
+                ? <EmptyState message={normalizedQuery ? "No matching tasks" : "No tasks yet"}/>
+                : visibleTasks.map(task => <TaskCard key={task.id} task={task}/>)
             }
-        </section>
+        </div>
     )
 }

@@ -1,8 +1,6 @@
 export default function TaskListWrapper({children}){
     return(
-        <div className={
-            `bg-stone-800 p-2 rounded-md flex items-center gap-2`
-        }>
+        <div className="flex items-center gap-2 border-b border-stone-700/70 bg-stone-700/20 p-2">
             {children}
         </div>
     )

@@ -15,13 +15,12 @@ export function SidebarGroups({items}){
                         end={item.to === '/'}
                         onClick={() => setSelectPage(item)}
                         className={({ isActive }) =>
-                            `bg-stone-700/20 p-1 rounded-sm flex items-center gap-2 text-stone-300
-                            ${
-                                isActive ? 'border border-stone-600' : ''
-                            }`
+                            `${
+                                isActive ? 'border border-stone-700/50 text-stone-100' : 'border border-transparent text-stone-400'
+                            } bg-stone-700/20 p-1  rounded-sm flex items-center gap-2 `
                         }
                     >
-                        <Icon size={18} stroke = {2} className='size-5'/>
+                        <Icon size={18} stroke = {1.5} className='size-5'/>
                         <span>{item.label}</span>
                     </NavLink>
                 )

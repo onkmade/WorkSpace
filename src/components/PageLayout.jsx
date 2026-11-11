@@ -1,22 +1,20 @@
-import Sidebar from "./layout/sidebar/1_Sidebar";
 import Main from "./layout/main/Main";
 import { useState } from "react";
-import { mainItems } from "../constants/navItems";
-import { SelectedContext } from "../context/BreadCrumb";
 import { ModalContext } from "@/context/ModalContext";
+import { TaskProvider } from "@/context/TaskContext";
+import Modal from "@/components/modal/AddTask";
 
 
 export default function PageLayout(){
     const [ isModalOpen, setIsModalOpen ] = useState(false);
-    const [selectPage, setSelectPage] = useState(mainItems[0]);
     return(
-        <div className="relative flex bg-stone-900 min-h-screen text-stone-50">
-            <SelectedContext.Provider value={{selectPage, setSelectPage}}>
+        <div className="relative min-h-screen bg-stone-900 text-stone-50">
+            <TaskProvider>
                 <ModalContext.Provider value={{isModalOpen, setIsModalOpen}}>
-                    <Sidebar />
                     <Main />
+                    <Modal />
                 </ModalContext.Provider>
-            </SelectedContext.Provider>
+            </TaskProvider>
         </div>
     );
 }

@@ -1,6 +1,16 @@
 import { twMerge } from "tailwind-merge";
 
-export default function FormField({element = 'input', label, id, onChange, placeholder, value, className}){
+export default function FormField({
+    element = 'input',
+    label,
+    id,
+    onChange,
+    placeholder,
+    value,
+    className,
+    required = true,
+    ariaDescribedBy,
+}){
     const Element = element;
     const ontextarea = 'h-35 resize-none'
     
@@ -15,12 +25,13 @@ export default function FormField({element = 'input', label, id, onChange, place
                     value={value}
                     name={label} 
                     placeholder={`Enter ${placeholder}`}
+                    aria-describedby={ariaDescribedBy}
                     className={twMerge(
                         `${element === 'textarea' ? ontextarea : '' } bg-stone-700 p-2 outline-transparent rounded-sm focus-within:outline-stone-600 border-none`,
                         className
 
                     )}
-                    required
+                    required={required}
                 />
             </label>
         </div>
