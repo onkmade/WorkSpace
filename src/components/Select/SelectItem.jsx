@@ -1,6 +1,6 @@
 import { SelectOption } from "@/context/SelectOption";
+import { IsOptionContext } from "@/context/IsOption";
 import { useContext } from "react";
-import { IsOptionContext } from "./SelectOptions";
 
 export function SelectItem({item}){
     const {setOption} = useContext(SelectOption);

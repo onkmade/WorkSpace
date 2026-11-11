@@ -27,7 +27,11 @@ export function TaskCardStatus({ task }) {
     const fallback = Icon ? <Icon size={18} color={color} /> : null;
 
     return (
-        <SelectOptions option={option} setOption={setOption}>
+        <SelectOptions
+            option={option}
+            setOption={setOption}
+            triggerClassName="flex size-7 shrink-0 items-center justify-center p-0"
+        >
             <SelectOptionDisplay
                 option={option}
                 fallback={fallback}

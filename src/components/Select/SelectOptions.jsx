@@ -1,14 +1,13 @@
 import { Select } from "./Select"
 import { SelectTrigger } from "./SelectTrigger"
-import { useState, createContext } from "react";
+import { useState } from "react";
 import { SelectOption } from "@/context/SelectOption";
+import { IsOptionContext } from "@/context/IsOption";
 import { SelectItems } from "@/constants/SelectOptions";
 import { SelectPopUp } from "./SelectPopup";
 import { AnimatePresence } from "motion/react";
 
-export const IsOptionContext = createContext(null);
-
-export default function SelectOptions({ option, setOption, children}){
+export default function SelectOptions({ option, setOption, children, triggerClassName }){
     const [isOption, setIsOption] = useState(false);
     const [items] = useState(SelectItems);
 
@@ -20,7 +19,11 @@ export default function SelectOptions({ option, setOption, children}){
         <Select>
             <IsOptionContext.Provider value={{isOption, setIsOption}}>
                 <SelectOption.Provider value={{option, setOption}}>
-                    <SelectTrigger option={option} onClick={handleOption}>
+                    <SelectTrigger
+                        option={option}
+                        onClick={handleOption}
+                        className={triggerClassName}
+                    >
                         {/* Main Line which shows the thing */}
                         {children}
                     </SelectTrigger>

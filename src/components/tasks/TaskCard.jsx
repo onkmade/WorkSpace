@@ -1,14 +1,37 @@
 import { IconDotsVertical, IconEdit, IconTrash } from '@tabler/icons-react';
 import { motion } from 'motion/react'
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 import { ModalContext } from '@/context/ModalContext';
 import { TasksContext } from '@/context/TasksContext';
 import { TaskCardStatus } from './TaskCardStatus';
 
 export default function TaskCard({task}){
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const menuRef = useRef(null);
     const { setIsModalOpen } = useContext(ModalContext);
     const { setTasks, setEditingTask } = useContext(TasksContext);
+
+    useEffect(() => {
+        if (!isMenuOpen) return;
+
+        function handlePointerDown(event) {
+            if (!menuRef.current?.contains(event.target)) {
+                setIsMenuOpen(false);
+            }
+        }
+
+        function handleKeyDown(event) {
+            if (event.key === "Escape") setIsMenuOpen(false);
+        }
+
+        document.addEventListener("pointerdown", handlePointerDown);
+        document.addEventListener("keydown", handleKeyDown);
+
+        return () => {
+            document.removeEventListener("pointerdown", handlePointerDown);
+            document.removeEventListener("keydown", handleKeyDown);
+        };
+    }, [isMenuOpen]);
 
     function handleEdit() {
         setEditingTask(task);
@@ -29,16 +52,16 @@ export default function TaskCard({task}){
             transition={{ duration: 0.55, ease: 'easeInOut'}}
         >
             <div className="flex items-center justify-between mb-0">
-                <h2 className="px-2 py-1 font-semibold text-stone-100/80">{task.title}</h2>
+                <h2 className="px-2 py-1 mb-1 font-semibold text-stone-100/80">{task.title}</h2>
                 <div className="flex items-center gap-1">
                     <TaskCardStatus key={task.id} task={task}/>
-                    <div className="relative">
+                    <div ref={menuRef} className="relative">
                         <button
                             type="button"
                             aria-label={`Actions for ${task.title}`}
                             aria-expanded={isMenuOpen}
                             onClick={() => setIsMenuOpen((isOpen) => !isOpen)}
-                            className="cursor-pointer rounded-sm p-1 text-stone-400 hover:bg-stone-700 hover:text-stone-100"
+                            className="flex size-7 shrink-0 cursor-pointer items-center justify-center rounded-sm p-0 text-stone-400 hover:bg-stone-700 hover:text-stone-100"
                         >
                             <IconDotsVertical size={20} stroke={2} />
                         </button>
